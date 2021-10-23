@@ -16,6 +16,10 @@ const defaultTodos = [
 function App() {
   const [todos, setTodos] = React.useState(defaultTodos);
   const [searchValue, SetSearchValue] = React.useState('');
+
+  const completedTodos = todos.filter(todo => todo.completed).length;
+  const totalTodos = todos.length;
+
   let searchedTodos = [];
 
   if(!searchValue.length >= 1) {
@@ -25,20 +29,21 @@ function App() {
       const todoText = todo.text.toLowerCase();
       const searchText = searchValue.toLowerCase();
       return todoText.includes(searchText);
-    })
-
+    });
   }
 
-  const completedTodos = todos.filter(todo => todo.completed).length;
-  const totalTodos = todos.length;
-
-  const completeTodos = (text) => {
-    const todoIndex = todos.findIndex(todo => todo.text == text);
+  const completeTodo = (text) => {
+    const todoIndex = todos.findIndex(todo => todo.text === text);
     const newTodos = [...todos];
+    if (!!newTodos[todoIndex].completed) {
+      newTodos[todoIndex].completed = false;
+      setTodos(newTodos);
+    } else {
     newTodos[todoIndex].completed = true;
     setTodos(newTodos);
+  }
   };
-  
+
   return (
     <React.Fragment>
       <TodoCounter
@@ -56,6 +61,7 @@ function App() {
             key={todo.text}
             text={todo.text}
             completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
           />
         ))}
       </TodoList>
