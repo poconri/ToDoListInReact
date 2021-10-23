@@ -3,11 +3,7 @@ import './TodoSearch.css';
 
 
 
-function TodoSearch () {
-    const [searchValue, SetSearchValue] = React.useState('');
-
-
-
+function TodoSearch ({ searchValue, SetSearchValue }) {
     const onSearchValueChange = (event) => {
         console.log(event.target.value);
         SetSearchValue(event.target.value);
@@ -17,8 +13,7 @@ function TodoSearch () {
     className='TodoSearch'
     value={searchValue}
     onChange={onSearchValueChange}
-     />,
-     <p>{searchValue}</p>
+     />
     ];
 }
 
