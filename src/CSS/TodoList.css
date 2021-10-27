@@ -3,3 +3,10 @@ ul {
     padding: 0 0 56px 0;
     list-style: none;
   }
+
+P {
+    margin: 0;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+  }
