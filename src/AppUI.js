@@ -8,7 +8,6 @@ import { CreateTodoButton } from './Components/CreateTodoButton';
 function AppUI ({
   loading,
   error,
-  errorMessage,
   totalTodos,
   completedTodos,
   searchValue,
