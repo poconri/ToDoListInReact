@@ -9,21 +9,41 @@ import { AppUI } from "../AppUI";
 //     { text: 'Comprar Waro', completed: false },
 //   ];
 
-function App() {
- const localStorageTodos = localStorage.getItem('TODOS_V1');
- let parsedTodos;
+function useLocalStorage(itemName, initialValue) {
 
- if (!localStorageTodos) {
-  localStorage.setItem('TODOS_V1', JSON.stringify([]));
-  parsedTodos = [];
+
+ const localStorageItem = localStorage.getItem(itemName);
+ let parsedItem;
+ 
+ if (!localStorageItem) {
+  localStorage.setItem(itemName, JSON.stringify(initialValue));
+  parsedItem = initialValue;
  } else {
-  parsedTodos = JSON.parse(localStorageTodos);
+  parsedItem = JSON.parse(localStorageItem);
+ }
+
+ const [item, setItem] = React.useState(parsedItem);
+
+ const saveItem = (newItem) => {
+ const stringyfiedItem = JSON.stringify(newItem);
+ localStorage.setItem(itemName, stringyfiedItem);
+ setItem(newItem);
+};
+
+return [
+ item,
+ saveItem,
+];
 }
 
-const [todos, setTodos] = React.useState(parsedTodos);
+function App() {
+
+ const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+
+
 const [searchValue, setSearchValue] = React.useState('');
 
-const completedTodos = todos.filter(todo => todo.completed).length;
+const completedTodos = todos.filter(todo => !!todo.completed).length;
 const totalTodos = todos.length;
 
 let searchedTodos = [];
@@ -38,18 +58,12 @@ if(!searchValue.length >= 1) {
  });
 }
 
-const saveTodos = (newTodos) => {
- const stringyfiedTodos = JSON.stringify(newTodos);
- localStorage.setItem('TODOS_V1', stringyfiedTodos);
- setTodos(newTodos);
-};
-
 const completeTodo = (text) => {
   const todoIndex = todos.findIndex(todo => todo.text === text);
   const newTodos = [...todos];
   if (!!newTodos[todoIndex].completed) {
   newTodos[todoIndex].completed = false;
-  setTodos(newTodos);
+  saveTodos(newTodos);
   } else {
   newTodos[todoIndex].completed = true;
   saveTodos(newTodos);
@@ -64,7 +78,7 @@ const deleteTodo = (text) => {
 };
 
 return (
- <AppUI 
+  <AppUI 
   totalTodos={totalTodos}
   completedTodos={completedTodos}
   searchValue = {searchValue}
