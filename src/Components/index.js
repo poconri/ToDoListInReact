@@ -1,5 +1,5 @@
 import React from "react";
-import { AppUI } from "../AppUI";
+import { AppUI } from "../AppUI.js";
 
 // const defaultTodos = [
 //     { text: 'Cortar Cebolla', completed: false },

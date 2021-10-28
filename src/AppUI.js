@@ -28,7 +28,7 @@ function AppUI ({
        />
 
       <TodoList>
-        {loading && <p>Loading... Please wait</p>}
+        {loading && <p>We are loading...</p>}
         {error && <p>Error: Ups something went wrong, try reloading the page.</p>}
         {!loading && !searchedTodos.length && <p>Create your first To do...</p>}
 
