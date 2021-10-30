@@ -1,5 +1,6 @@
 import React from 'react';
 import { TodoContext } from './TodoContext/index.js';
+import '../CSS/TodoForm.css';
 
 function TodoForm() {
 
@@ -33,18 +34,19 @@ const onChange = (event) => {
   <textarea
   value= {newTodoValue}
   onChange={onChange}
-  placeholder="Cortar la Cebolla para el almuerzo"
+  placeholder="Add a new to do here..."
   />
-  <div>
+  <div className="TodoForm-buttonContainer">
       <button
       type="button"
       onClick={ OnCancel }
+      className="TodoForm-button TodoForm-button-cancel"
       >
           Cancel
       </button>
       <button
         type="submit"
-
+        className="TodoForm-button TodoForm-button-add"
       >
           Add
       </button>
