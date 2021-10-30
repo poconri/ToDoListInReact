@@ -29,6 +29,14 @@ if(!searchValue.length >= 1) {
  });
 }
 
+const addTodo = (text) => {
+  const newTodos = [...todos];
+  newTodos.push({
+    completed: false,
+    text,
+  });
+};
+
 const completeTodo = (text) => {
   const todoIndex = todos.findIndex(todo => todo.text === text);
   const newTodos = [...todos];
@@ -54,6 +62,7 @@ const deleteTodo = (text) => {
   error,
   totalTodos,
   completedTodos,
+  addTodo,
   searchValue,
   setSearchValue,
   searchedTodos,

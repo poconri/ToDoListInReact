@@ -3,6 +3,7 @@ import { TodoCounter } from './Components/TodoCounter';
 import { TodoSearch } from './Components/TodoSearch.js';
 import { TodoList } from './Components/TodoList';
 import { TodoItem } from './Components/TodoItem';
+import { TodoForm } from './Components/TodoForm.js';
 import { CreateTodoButton } from './Components/CreateTodoButton';
 import {TodoContext} from './Components/TodoContext/index.js';
 import { Modal } from './modal/index.js';
@@ -39,7 +40,8 @@ return(
     
     {!!openModal && (
       <Modal>
-      <p> {searchedTodos[0]?.text} </p>
+      <TodoForm />
+
     </Modal>
     )}
 
