@@ -35,6 +35,7 @@ const addTodo = (text) => {
     completed: false,
     text,
   });
+  saveTodos(newTodos);
 };
 
 const completeTodo = (text) => {

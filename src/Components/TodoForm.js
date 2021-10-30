@@ -1,23 +1,28 @@
 import React from 'react';
+import { TodoContext } from './TodoContext/index.js';
 
 function TodoForm() {
 
-const [newTodoValue, setNewTodoValue] = useState('');
+const [newTodoValue, setNewTodoValue] = React.useState('');
 
 const {
     addTodo,
+    setOpenModal,
+
 } = React.useContext(TodoContext);
 
 const onChange = (event) => {
-  setNewTodoValue (event.target.value);
+  setNewTodoValue(event.target.value);
 };
 
- const onCancel = () => {
-     //TODO
+ const OnCancel = () => {
+     setOpenModal(false);
  };
+
  const onSubmit = (event) => {
-    event.preventDefault();
-    addTodo(input.value);
+    event.preventDefault(); //este metodo que viene por defecto a que cuando el formulario se envie, no se recargue la pagina.
+    addTodo(newTodoValue);
+    setOpenModal(false);
 };
 
  return (
@@ -25,7 +30,7 @@ const onChange = (event) => {
   onSubmit={onSubmit}
   >
   <label>...</label>
-  <textarea 
+  <textarea
   value= {newTodoValue}
   onChange={onChange}
   placeholder="Cortar la Cebolla para el almuerzo"
@@ -33,12 +38,13 @@ const onChange = (event) => {
   <div>
       <button
       type="button"
-      onClick={ OnCancel}
+      onClick={ OnCancel }
       >
           Cancel
       </button>
       <button
         type="submit"
+
       >
           Add
       </button>
