@@ -7,6 +7,9 @@ import { TodoForm } from './Components/TodoForm.js';
 import { CreateTodoButton } from './Components/CreateTodoButton';
 import {TodoContext} from './Components/TodoContext/index.js';
 import { Modal } from './modal/index.js';
+import { TodoError } from './Components/TodoError.js';
+import { TodoLoading } from './Components/TodoLoading.js';
+import { EmptyTodo } from './Components/EmptyTodo.js';
 
 function AppUI () {
  const {
@@ -24,9 +27,9 @@ return(
   <TodoCounter />
    <TodoSearch />
     <TodoList>
-     {loading && <p>We are loading...</p>}
-     {error && <p>Error: Ups something went wrong, try reloading the page.</p>}
-     {!loading && !searchedTodos.length && <p>Create your first To do...</p>}
+     {error && <TodoError error={error} />}
+     {loading && <TodoLoading />}
+     {!loading && !searchedTodos.length && <EmptyTodo />}
      {searchedTodos.map(todo => (
       <TodoItem
       key={todo.text}
@@ -41,7 +44,6 @@ return(
     {!!openModal && (
       <Modal>
       <TodoForm />
-
     </Modal>
     )}
 

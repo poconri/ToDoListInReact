@@ -6,6 +6,7 @@ form {
     display: flex;
     align-content: center;
     flex-direction: column;
+    
   }
   
   label {
@@ -18,7 +19,7 @@ form {
   textarea {
     background-color: #F9FBFC;
     border: 2px, solid #202329;
-    border-radius: 2px;
+    border-radius: 4px;
     box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.25);
     color: #1E1E1F;
     font-size: 20px;
@@ -36,6 +37,7 @@ form {
   
   textarea:focus {
     outline-color: #61DAFA;
+    
   }
   
   .TodoForm-buttonContainer {
@@ -62,6 +64,7 @@ form {
   .TodoForm-button-add {
     background-color: #61DAFA;
     box-shadow: 0px 5px 25px rgba(97, 218, 250, 0.5);
+    border-radius: 60px;
   }
   
   .TodoForm-button-cancel {
