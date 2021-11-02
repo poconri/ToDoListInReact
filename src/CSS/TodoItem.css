@@ -41,7 +41,8 @@
   }
 
   .Icon-check--active {
-    color: #4caf50;
+    color: white;
+    background-color: #4caf50;
   }
   
   .Icon-delete {
