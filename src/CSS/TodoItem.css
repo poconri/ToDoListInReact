@@ -1,12 +1,14 @@
 
 .TodoItem {
-    background-color: #FAFAFA;
+    background: rgba( 255, 255, 255, 0.25 );
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 24px;
     box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+    border-radius: 60px;
+    border: 2px solid white;
   }
   
   .TodoItem-p {
@@ -25,8 +27,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 48px;
-    width: 48px;
+    height: 75px;
+    width: 75px;
     font-size: 24px;
     font-weight: bold;
     /* background-color: #CCC; */
@@ -34,10 +36,11 @@
   
   .Icon-check {
     position: absolute;
-    left: 12px;
-    background-color:grey;
+    left: 30px;
+    background: rgba( 255, 255, 255, 0.25 );
     border-radius: 50%;
     font-weight: bold;
+    font-size: 50px;
   }
 
   .Icon-check--active {
@@ -47,8 +50,8 @@
   
   .Icon-delete {
     position: absolute;
-    top: 30px;
-    right: 10px;
+    top: 18px;
+    right: 20px;
     font-size: 50px;
   }
   .Icon-delete:hover {
