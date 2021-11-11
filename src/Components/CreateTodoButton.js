@@ -15,7 +15,7 @@ function CreateTodoButton() {
       className="CreateTodoButton"
       onClick={onClickButton}
     >
-      +
+      <span>+</span>
     </button>
   );
 }
